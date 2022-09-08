@@ -1,0 +1,1 @@
+"if a fight is inevitable, then you need to hit first" - Putin
