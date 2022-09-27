@@ -1,5 +1,4 @@
-void print ();
+void print()
 {
-    std::cout << "hello world/n";
-    return 0;
+std::cout << "Hello World!\n";
 }
