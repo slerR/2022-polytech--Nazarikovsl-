@@ -23,5 +23,6 @@
      }
 
    std::cout << "sum=" << sum << std::endl;
+   system("Pause");
    return 0;
  }
