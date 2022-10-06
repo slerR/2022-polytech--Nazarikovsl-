@@ -1,0 +1,3 @@
+C:/Users/User/Documents/GitHub/2022-polytech--Nazarikov-/build/CMakeFiles/compiler_02.dir
+C:/Users/User/Documents/GitHub/2022-polytech--Nazarikov-/build/CMakeFiles/edit_cache.dir
+C:/Users/User/Documents/GitHub/2022-polytech--Nazarikov-/build/CMakeFiles/rebuild_cache.dir

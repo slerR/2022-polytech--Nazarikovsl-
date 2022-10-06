@@ -1,0 +1,12 @@
+[
+{
+  "directory": "C:/Users/User/Documents/GitHub/2022-polytech--Nazarikov-/build",
+  "command": "g++   -g -o CMakeFiles/compiler_02.dir/hello_world.cpp.obj -c C:/Users/User/Documents/GitHub/2022-polytech--Nazarikov-/02_compiler/hello_world.cpp",
+  "file": "C:/Users/User/Documents/GitHub/2022-polytech--Nazarikov-/02_compiler/hello_world.cpp"
+},
+{
+  "directory": "C:/Users/User/Documents/GitHub/2022-polytech--Nazarikov-/build",
+  "command": "g++   -g -o CMakeFiles/compiler_02.dir/func.cpp.obj -c C:/Users/User/Documents/GitHub/2022-polytech--Nazarikov-/02_compiler/func.cpp",
+  "file": "C:/Users/User/Documents/GitHub/2022-polytech--Nazarikov-/02_compiler/func.cpp"
+}
+]
