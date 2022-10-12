@@ -10,7 +10,10 @@ int main()
     
     char c;
    
-    cout <<"Dear, enter the desired mathematical operation\n";
+    while (true)
+
+    { 
+        cout <<"Dear, enter the desired mathematical operation\n";
     
     cin >> a;
     
@@ -18,7 +21,7 @@ int main()
     
     cin >> b;
     
-    switch(c)
+   switch(c)
     {
         case '+':
         cout << "Dear, here is the result of the operation\n " << a+b << endl;
@@ -33,8 +36,15 @@ int main()
         break;
         
         case '/':
-        
+
+        if (b==0)
+        {
+            cout <<"Dear, chose another number" << endl;
+        }
+        else
+        {
         cout << "Dear, here is the result of the operation\n " << a/b << endl;
+        }
 
         break;
     
@@ -44,15 +54,11 @@ int main()
         break;
 
         default:
-        cout << "Dear, such an operation is impossible to calculate\n";
+        return 0;
         break;
+        system(0);
 
     }
-
-
-system("Pause");
-
-return 0;
-
+  }
 }
 
