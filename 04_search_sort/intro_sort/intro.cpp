@@ -14,12 +14,6 @@ void fill_array_random(int arr[], int n, int a, int b)
     }
 }
 
-void swap(int arr[], int idx_a, int idx_b)
-{
-    int temp = arr[idx_a];
-    arr[idx_a] = arr[idx_b];
-    arr[idx_b] = temp; 
-}
 
 void print_array(int arr[], int n, bool show_index = false)
 {
