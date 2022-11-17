@@ -18,9 +18,9 @@ int main()
 		in >> parameter >> value >> unit;
 		memory[i] = value;
 	}
-	double p = memory[1] / memory[0];
+	double p = (memory[0] - memory[1]) / memory[0];
 	int percentage = p * 100;
-  int count_bars = round(percentage/10);
+    int count_bars = round(percentage/10);
 	for (int i = 0; i < count_bars; i++)
 	{
 		cout << "| ";
@@ -31,6 +31,6 @@ int main()
 	}
 	cout << " " << percentage << "%" << endl;
 	system("pause 0");
-  return 0;
+    return 0;
 
 }
