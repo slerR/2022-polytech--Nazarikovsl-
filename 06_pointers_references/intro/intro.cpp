@@ -1,3 +1,4 @@
+#include <iostream>
 #include <cassert>
 using namespace std;
 
@@ -24,5 +25,6 @@ int main()
     assert(length("") == 0);
     assert(length("hello world") == 11);
     assert(length(nullptr) == 0);
+    system("pause 0");
     return 0;
 }
