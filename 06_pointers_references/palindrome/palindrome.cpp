@@ -1,3 +1,4 @@
+#include <iostream>
 #include <cassert>
 #include <cstring>
 
@@ -25,5 +26,6 @@ assert(palindrome("pipi") == false);
 assert(palindrome(nullptr) == true);
 assert(palindrome(" ") == true);
 
+system("pause 0");
 return 0;
 }
