@@ -104,12 +104,6 @@ int main()
 {
     std::cout << "2*6 = " << char_mul("2","6") << std::endl << std::endl;
     std::cout << "-1*100 = " << char_mul("-1","100") << std::endl << std::endl;
-    assert(char_mul("1","2") == "2"); // проверяем работоспособность программы
-    assert(char_mul("3","4") == "12");
-    assert(char_mul("0","5") == "0");
-    assert(char_mul("-2","0") == "0");
-    assert(char_mul("13","13") == "169");
-    assert(char_mul("100","100") == "10000");
     system("pause 0");
     return 0;
 }
