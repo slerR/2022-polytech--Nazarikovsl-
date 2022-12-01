@@ -1,3 +1,4 @@
 {
-    "cmake.sourceDirectory": "${workspaceFolder}/04_search_sort/sort_cmp"
+    "cmake.sourceDirectory": "${workspaceFolder}/04_search_sort/sort_cmp",
+    "cmake.configureOnOpen": true
 }
