@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-unsigned long Hash(const char* str) {
+unsigned long hash_function(const char* str) {
 	unsigned long res = 0, g = 31;
 	for (int j = 0; str[j]; j++)
 		res = g * res + str[j];
@@ -169,5 +169,6 @@ int main() {
     print_search(ht, "3");
     print_table(ht);
     free_table(ht);
+    system("pause 0");
     return 0;
 }
