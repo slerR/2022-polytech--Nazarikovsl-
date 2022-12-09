@@ -3,20 +3,13 @@
 #include <iostream>
 using namespace std;
 
+#define CAPACITY 50000 // Size of the Hash Table
+
 unsigned long hash_function(const char* str) {
 	unsigned long res = 0, g = 31;
 	for (int j = 0; str[j]; j++)
 		res = g * res + str[j];
-	return res;
-}
-
-#define CAPACITY 50000 // Size of the Hash Table
-
-unsigned long hash_function(char* str) {
-    unsigned long i = 0;
-    for (int j=0; str[j]; j++)
-        i += str[j];
-    return i % CAPACITY;
+	return res%CAPACITY;
 }
 
 typedef struct Ht_item Ht_item;
