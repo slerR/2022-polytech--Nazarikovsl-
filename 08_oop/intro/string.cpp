@@ -15,7 +15,7 @@ const char *String::c_str() { return data; }
 String String::operator+(String rv) {
   auto dest = (char *)malloc(length);
   strcpy(dest, data);
-  strcpy(dest + rv.get_length(), rv.c_str());
+  strcpy(dest + rv.get_length(), rv.c_str()); 
   return String(dest);
 }
 

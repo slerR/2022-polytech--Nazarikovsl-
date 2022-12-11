@@ -12,15 +12,11 @@ unsigned long hash_function(const char* str) {
 	return res%CAPACITY;
 }
 
-typedef struct Ht_item Ht_item;
-
 // Define the Hash Table Item here
 struct Ht_item {
     char* key;
     char* value;
 };
-
-typedef struct HashTable HashTable;
 
 // Define the Hash Table here
 struct HashTable {
@@ -29,6 +25,10 @@ struct HashTable {
     Ht_item** items;
     int size;
     int count;
+    void Size()
+    {
+        cout << "This is the number of the keys which have been writtened into the table: " << count << endl << endl;
+    }
 };
 
 Ht_item* create_item(char* key, char* value) {
@@ -75,9 +75,6 @@ void free_table(HashTable* table) {
     free(table);
 }
 
-void handle_collision(HashTable* table, unsigned long index, Ht_item* item) {
-}
-
 void ht_insert(HashTable* table, char* key, char* value) {
     // Create the item
     Ht_item* item = create_item(key, value);
@@ -91,7 +88,7 @@ void ht_insert(HashTable* table, char* key, char* value) {
         // Key does not exist.
         if (table->count == table->size) {
             // Hash Table Full
-            printf("Insert Error: Hash Table is full\n");
+            cout << "Insert Error: Hash Table is full\n" << endl;
             // Remove the create item
             free_item(item);
             return;
@@ -103,18 +100,11 @@ void ht_insert(HashTable* table, char* key, char* value) {
     }
 
     else {
-            // Scenario 1: We only need to update value
+            //We only need to update value
             if (strcmp(current_item->key, key) == 0) {
                 strcpy(table->items[index]->value, value);
                 return;
             }
-   
-        else {
-            // Scenario 2: Collision
-            // We will handle case this a bit later
-            handle_collision(table, index, item);
-            return;
-        }
     }
 }
 
@@ -132,34 +122,35 @@ char* ht_search(HashTable* table, char* key) {
     return NULL;
 }
 
-void print_search(HashTable* table, char* key) {
-    char* val;
-    if ((val = ht_search(table, key)) == NULL) {
-        printf("Key:%s does not exist\n", key);
+void get(HashTable* table, char* key) {
+    char* value;
+    if ((value = ht_search(table, key)) == NULL) {
+        cout << "Sorry baby, there is no element with the key \""<< key <<"\" in the table " << endl << endl;
         return;
     }
     else {
-        printf("Key:%s, Value:%s\n", key, val);
+        cout << "There is the value:  " << value << "   finded by the key \"" << key << "\"" << endl << endl;
     }
 }
 
 void print_table(HashTable* table) {
-    printf("\nHash Table\n-------------------\n");
+    cout << "This is the hash-table" << endl << endl << endl;
     for (int i=0; i<table->size; i++) {
         if (table->items[i]) {
-            printf("Index:%d, Key:%s, Value:%s\n", i, table->items[i]->key, table->items[i]->value);
+            cout << "Index: " << i << "\t Key: " << table->items[i]->key << "\t\t Value: " << table->items[i]->value << endl;
         }
     }
-    printf("-------------------\n\n");
+    cout << endl << endl << endl;
 }
 
 int main() {
     HashTable* ht = create_table(CAPACITY);
     ht_insert(ht, "1", "First address");
     ht_insert(ht, "2", "Second address");
-    print_search(ht, "1");
-    print_search(ht, "2");
-    print_search(ht, "3");
+    ht->Size();
+    get(ht, "1");
+    get(ht, "2");
+    get(ht, "3");
     print_table(ht);
     free_table(ht);
     system("pause 0");
