@@ -30,7 +30,7 @@ String::~String()
 }
 
 
-
+/*
 int* String::search( String understr, String str){
 
 // создаем массив, заполненный числами p в соответствующей степени
@@ -73,6 +73,7 @@ for(int j = i + understr.get_length(); j < n; j++)
 */
 
 // проверяем все позиции
+/*
 int* count = new int[n/understr.get_length()+1];
 int j = 0;
 for (int i = 0; i + understr.get_length() <= n; i++) {
@@ -88,5 +89,53 @@ delete[] hs;
 delete[] pow;
 //delete[] arr;
 }
+*/
 
-
+int* String::search (String str, String str2)
+{ 
+    int sum  = 0;
+    int sum2 = 0;
+    int i = 0;
+    int k = 0;
+    int a = 0;
+    int* arr = new int [a];
+    
+    char str2_02[264] = {};
+    
+    char temp [264] = {};
+    
+    //считаем хеш исходной подстроки
+    for (int i = 0; str2.data[i] != 0; i++) 
+    {
+        sum += str2.data[i];
+    }
+    
+    //считаем хеш подстроки, длины как переданная параметром в функцию подстрока, в исходной строке 
+    for (int k = 0; str2.data[k] != 0; k++)
+    {
+        sum2 += str.data[k];
+    }
+    
+    //записываем данные строки класса String в инициализированную строку
+    for (int  i = 0; i < str2.get_length(); i++)
+    {
+        str2_02[i] = str2.data[i];     
+    }
+    
+    //идем по всей строке, сравниваем хеш суммы всех подстрок строки и хеш заданной подстроки, а также сравниваем сами подстроки
+    for (int p = 0; str.data[p] != 0; p++)
+    {
+        int l = p;     
+        
+        for (int t = 0; str2.data[t] != 0; t++)
+        {
+            temp [t] = str.data[l];
+            l++;
+        }
+       
+        if (sum = sum2 && strcmp (str2_02, temp) == 0) {arr[a] = p; ++a;}
+        
+        else sum2 - str.data[p] + str.data[p + i];
+    }
+    return arr;
+}
