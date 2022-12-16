@@ -1,24 +1,26 @@
 #include<iostream>
 #include <stdlib.h>
+#include <vector>
 using namespace std;
 
-struct Node
+//структура бинарного дерева поиска 
+struct Tree
 {
     int data;
-    Node* left;
-    Node* right;
-    Node* search(Node* root, int x);
-    Node* insert(Node* root, int x);
-    Node* create_element(int value);
-    int size(Node* root);
-    void del(Node*& root, int value);
+    Tree* left;
+    Tree* right;
+    Tree* search(Tree* root, int x);
+    Tree* insert(Tree* root, int x);
+    Tree* create_element(int value);
+    int size(Tree* root);
+    void del(Tree*& root, int value);
 
 };
 
 //Создаем элемент дерева: 1. выделяем память, 2. заполняем поля, 3. возвращаем указатель на наш новый элемент
-Node* Node::create_element(int value)
+Tree* Tree::create_element(int value)
 {
-    Node* x = new Node;
+    Tree* x = new Tree;
     x->data = value;
     x->left = NULL;
     x->right = NULL;
@@ -26,7 +28,7 @@ Node* Node::create_element(int value)
 }
 
 //ищем элемент в дереве с корнем root
-Node* Node::search(Node* root, int x)
+Tree* Tree::search(Tree* root, int x)
 {
     if(!root || root->data == x)
     {
@@ -40,20 +42,20 @@ Node* Node::search(Node* root, int x)
 }
 
 //вставляем вершину в дерево
-Node* Node::insert(Node* root, int value)
+Tree* Tree::insert(Tree* root, int value)
 {
-    // если корень нулевой, создаем новый узел и возвращаем его
+     // если корень нулевой, создаем новый узел и возвращаем его
     if (root == nullptr) {
-        auto* x = new Node{value, nullptr, nullptr};
+        auto* x = new Tree{value, nullptr, nullptr};
         root = x;
         return x;
     }
  
-    // если заданный элемент меньше корневого узла, повторить для левого поддерева
+     // если заданный элемент меньше корневого узла, повторить для левого поддерева
     if (value < root->data) {
         root->left = insert(root->left, value);
     }
-    // если данный элемент больше, чем корневой узел, повторить для правого поддерева
+     // если данный элемент больше, чем корневой узел, повторить для правого поддерева
     else {
         root->right = insert(root->right, value);
     }
@@ -62,33 +64,34 @@ Node* Node::insert(Node* root, int value)
 }
 
 //функция возвращает число вершин(элементов) в дереве
-int Node::size(Node* root)
+int Tree::size(Tree* root)
 {
-    int count  = 1;
+    int count  = 2;
     if(root->left !=NULL)
     {size(root->left);}
-    count++;
+    ++count;
     if(root->right != NULL)
     {size(root->right);}
-    count++;
+    ++count;
     return count;
 }
 
 //симметричный обход в глубину
-void symmetric(Node* a)
+void symmetric(Tree* a, vector<int>& temp)
 {
-if(!a){return;}
+    if(!a){return;}
 
- else
- {
-    symmetric(a->left);
-    cout << a->data << ", ";
-    symmetric(a->right);
- }
+     else
+    {
+        symmetric(a->left, temp);
+        temp.push_back(a->data);
+        //cout << a->data << ", ";
+        symmetric(a->right, temp);
+    }
 }
 
 // Вспомогательная функция для поиска узла минимального значения в поддереве с корнем curr
-Node* get_minimum_value(Node* curr)
+Tree* get_minimum_value(Tree* curr)
 {
     while (curr->left != nullptr) 
     {
@@ -98,11 +101,12 @@ Node* get_minimum_value(Node* curr)
 }
 
 //вспомогательная функция поиска родителя текущего элемента
-void search_parent(Node* &curr, int value, Node* &parent)
+void search_parent(Tree* &curr, int value, Tree* &parent)
 {
-    // обход дерева и поиск ключа
+        // обход дерева и поиск ключа
     while (curr != nullptr && curr->data != value)
     {
+        
         // обновить родителя до текущего узла
         parent = curr;
  
@@ -118,13 +122,13 @@ void search_parent(Node* &curr, int value, Node* &parent)
 }
 
 // Функция для удаления узла из BST
-void Node::del(Node*& root, int value)
+void Tree::del(Tree*& root, int value)
 {
     // указатель для хранения родителя текущего узла
-    Node* parent = nullptr;
+    Tree* parent = nullptr;
  
     // начинаем с корневого узла
-    Node* curr = root;
+   Tree* curr = root;
  
     // поиск ключа в бинарном и установка его родительского указателя
     search_parent(curr, value, parent);
@@ -159,7 +163,7 @@ void Node::del(Node*& root, int value)
     else if (curr->left && curr->right)
     {
         // найти его узел-преемник
-        Node* successor = get_minimum_value(curr->right);
+        Tree* successor = get_minimum_value(curr->right);
  
         // сохраняем значение
         int val = successor->data;
@@ -174,7 +178,7 @@ void Node::del(Node*& root, int value)
     // Случай 3: удаляемый узел имеет только одного потомка
     else {
         // выбираем дочерний узел
-        Node* child = (curr->left)? curr->left: curr->right;
+        Tree* child = (curr->left)? curr->left: curr->right;
  
         // если удаляемый узел не является корневым узлом, устанавливаем его родителя своему потомку
         if (curr != root)

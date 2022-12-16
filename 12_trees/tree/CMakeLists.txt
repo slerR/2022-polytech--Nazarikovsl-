@@ -1,5 +1,5 @@
 cmake_minimum_required()
 
-project()
+project(Bi_Tree)
 
-add_executable()
+add_executable(search_tree.h)
